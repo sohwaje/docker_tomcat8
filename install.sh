@@ -1,13 +1,7 @@
 #!/bin/bash
 date_=$(date "+%Y%m%d%H%M%S")
-NAME="docker_tomat8_install"
+NAME="docker_tomcat8"
 URL="https://github.com/sohwaje/${NAME}.git"
-### fail or OK
-_retVal()
-{
-  retVal=$?
-  test $retVal -eq 0 && return 0 || echo "[Failed]";exit $retVal
-}
 
 ### start
 echo "Download tomcat8 Docker Source"
@@ -21,4 +15,4 @@ else
 fi
 
 echo "install tomcat8 docker"
-docker build -t tomcat8 -f $NAME/Dockerfile
+docker build -t tomcat8 -f ~/$NAME
