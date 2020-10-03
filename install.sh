@@ -46,7 +46,7 @@ if [[ -d $LOGDIR ]];then
   sudo mv $LOGDIR /var/log/$CONTAINER-$date_
   sudo mkdir $LOGDIR
 else
-  echo "[Step ---> Create $$LOGDIR]"
+  echo "[Step ---> Create $LOGDIR]"
   sudo mkdir /var/log/$LOGDIR
 fi
 

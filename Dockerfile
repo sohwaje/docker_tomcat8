@@ -2,12 +2,12 @@ FROM tomcat:8.5-jre8
 
 MAINTAINER Sohwaje <sohwaje@gmail.com>
 
-# RUN rm -rf /usr/local/tomcat/webapps/ROOT
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
 RUN mkdir /usr/local/tomcat/logs/gclog
 
 # ADD webapps/sample.war /usr/local/tomcat/webapps/ROOT.war
-RUN mkdir /usr/local/tomcat/webapps/ROOT
+# RUN mkdir /usr/local/tomcat/webapps/ROOT
 
 ADD conf/setenv.sh /usr/local/tomcat/bin
 
