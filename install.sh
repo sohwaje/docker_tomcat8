@@ -7,6 +7,20 @@ IMAGE="tomcat8"
 CONTAINER="tomcat8"
 LOGDIR="/var/log/$CONTAINER"
 
+_retVal()
+{
+  if [[ $retVal -eq 0 ]];then
+    echo "[OK]"
+    # do something
+  else
+    echo "[Failed]"
+    exit
+  fi
+}
+
+echo "[0] Docker install check"
+sudo docker -v | _retVal
+
 ### start
 echo "[1] Create Tomcat webapps directory"
 if [[ -d $SOURCEDIR ]];then
