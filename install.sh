@@ -43,7 +43,7 @@ fi
 echo "[4] Create Tomcat log directory"
 if [[ -d $LOGDIR ]];then
   echo "[Step ---> $LOGDIR log directory already exist. backup and create]"
-  mv $LOGDIR /var/log/$CONTAINER-$date_
+  sudo mv $LOGDIR /var/log/$CONTAINER-$date_
   sudo mkdir $LOGDIR
 else
   echo "[Step ---> Create $$LOGDIR]"
@@ -54,5 +54,5 @@ echo "[5] install tomcat8 docker"
 docker build -t $IMAGE ~/$BASEDIR && \
   docker run -d -p 18080:8080 \
   --name $CONTAINER $IMAGE \
-  -v $SOURCE:/usr/local/tomcat8/webapps/ROOT \
+  -v $SOURCEDIR:/usr/local/tomcat8/webapps/ROOT \
   -v $LOGDIR:/usr/local/tomcat8/logs
