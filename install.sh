@@ -53,6 +53,7 @@ fi
 echo "[5] install tomcat8 docker"
 docker build -t $IMAGE ~/$BASEDIR && \
   docker run -d -p 18080:8080 \
-  --name $CONTAINER $IMAGE \
+  --name $CONTAINER \
   -v $SOURCEDIR:/usr/local/tomcat8/webapps/ROOT \
-  -v $LOGDIR:/usr/local/tomcat8/logs
+  -v $LOGDIR:/usr/local/tomcat8/logs \
+  $IMAGE
