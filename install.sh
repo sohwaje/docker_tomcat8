@@ -1,24 +1,14 @@
 #!/bin/bash
+# git clone https://github.com/sohwaje/docker_tomcat8.git
+SCRIPT=$(readlink -f "$0")  # script Absolute path
+BASEDIR=$(dirname "$SCRIPT") # script directory Absolute path
 date_=$(date "+%Y%m%d%H%M%S")
-BASEDIR="docker_tomcat8"
-URL="https://github.com/sohwaje/${BASEDIR}.git"
 IMAGE="tomcat8"
 CONTAINER="tomcat8"
 SOURCEDIR="/webapps"
-SOURCE="webapps/sample.war"
 LOGDIR="/var/log/$CONTAINER"
 
 ### start
-echo "[1] Download tomcat8 Docker Source"
-if [[ -d $BASEDIR ]];then
-  echo "[Step 1 ---> $BASEDIR directory already exist. backup and Download]"
-  mv $BASEDIR $BASEDIR-$date_
-  git clone $URL
-else
-  echo "[Step 2 ---> Download $URL]"
-  git clone $URL
-fi
-
 echo "[2] Create Tomcat webapps directory"
 if [[ -d $SOURCEDIR ]];then
   echo "[Step 3 ---> $SOURCEDIR log directory already exist. backup and create]"
@@ -39,8 +29,8 @@ else
   sudo mkdir /var/log/$LOGDIR
 fi
 
-echo [4] install tomcat8 docker"
-docker build -t $IMAGE ~/$BASEDIR && \
+echo "[4] install tomcat8 docker"
+docker build -t $IMAGE $BASEDIR/ && \
   docker run -d -p 18080:8080 \
   --name $CONTAINER \
   -v $SOURCEDIR:/usr/local/tomcat8/webapps/ROOT \
