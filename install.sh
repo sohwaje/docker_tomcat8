@@ -11,46 +11,35 @@ LOGDIR="/var/log/$CONTAINER"
 ### start
 echo "[1] Download tomcat8 Docker Source"
 if [[ -d $BASEDIR ]];then
-  echo "[Step ---> $BASEDIR directory already exist. backup and Download]"
+  echo "[Step 1 ---> $BASEDIR directory already exist. backup and Download]"
   mv $BASEDIR $BASEDIR-$date_
   git clone $URL
 else
-  echo "[Step ---> Download $URL]"
+  echo "[Step 2 ---> Download $URL]"
   git clone $URL
 fi
 
 echo "[2] Create Tomcat webapps directory"
 if [[ -d $SOURCEDIR ]];then
-  echo "[Step ---> $SOURCEDIR log directory already exist. backup and create]"
+  echo "[Step 3 ---> $SOURCEDIR log directory already exist. backup and create]"
   sudo mv $SOURCEDIR $SOURCEDIR-$date_
   sudo mkdir $SOURCEDIR
 else
-  echo "[Step ---> $Create $SOURCEDIR]"
+  echo "[Step 3 ---> $Create $SOURCEDIR]"
   sudo mkdir $SOURCEDIR
 fi
 
-echo "[3] Copy source file to $SOURCEDIR"
-if [[ -f $(ls $SOURCEDIR) ]] && [[ -r $(ls $SOURCEDIR) ]];then
-  echo "[Step ---> $SOURCE file already exist. backup and copy]"
-  cd $BASEDIR
-  sudo cp -arv $SOURCE $SOURCEDIR
-else
-  echo "[Step ---> $SOURCE file copy]"
-  cd $BASEDIR
-  sudo cp -arv $SOURCE $SOURCEDIR
-fi
-
-echo "[4] Create Tomcat log directory"
+echo "[3] Create Tomcat log directory"
 if [[ -d $LOGDIR ]];then
-  echo "[Step ---> $LOGDIR log directory already exist. backup and create]"
+  echo "[Step 4 ---> $LOGDIR log directory already exist. backup and create]"
   sudo mv $LOGDIR /var/log/$CONTAINER-$date_
   sudo mkdir $LOGDIR
 else
-  echo "[Step ---> Create $LOGDIR]"
+  echo "[Step 4 ---> Create $LOGDIR]"
   sudo mkdir /var/log/$LOGDIR
 fi
 
-echo "[5] install tomcat8 docker"
+echo [4] install tomcat8 docker"
 docker build -t $IMAGE ~/$BASEDIR && \
   docker run -d -p 18080:8080 \
   --name $CONTAINER \
