@@ -17,21 +17,10 @@ _retVal()
     exit
   fi
 }
-
-echo "[0] Docker install check"
-sudo docker -v | _retVal
-
 ### start
-echo "[1] Create Tomcat webapps directory"
-if [[ -d $SOURCEDIR ]];then
-  echo "[Step 1 ---> $SOURCEDIR log directory already exist. backup and create]"
-  sudo mv $SOURCEDIR $SOURCEDIR-$date_
-  sudo mkdir $SOURCEDIR
-else
-  echo "[Step 1 ---> $Create $SOURCEDIR]"
-  sudo mkdir $SOURCEDIR
-fi
-
+echo "[1] Docker install check"
+echo "[Step 1 ---> Docker install check]"
+  sudo docker -v | _retVal
 echo "[2] Create Tomcat log directory"
 if [[ -d $LOGDIR ]];then
   echo "[Step 2 ---> $LOGDIR log directory already exist. backup and create]"
