@@ -22,6 +22,6 @@ ADD lib/tomcat-extensions.jar /usr/local/tomcat/lib
 
 # 소스 war 파일 복사
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
-ADD webapps/sample.war /usr/local/tomcat/webapps/ROOT.war
+ADD webapps/ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
 CMD ["catalina.sh", "run"]
