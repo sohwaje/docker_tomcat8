@@ -5,7 +5,6 @@ BASEDIR=$(dirname "$SCRIPT") # script directory Absolute path
 date_=$(date "+%Y%m%d%H%M%S")
 IMAGE="tomcat8"
 CONTAINER="tomcat8"
-SOURCEDIR="/webapps"
 LOGDIR="/var/log/$CONTAINER"
 
 ### start
@@ -34,6 +33,5 @@ echo "[Step 3 ---> docker build & run]"
 docker build -t $IMAGE $BASEDIR/ && \
   docker run -d -p 18080:8080 \
   --name $CONTAINER \
-  -v $SOURCEDIR:/usr/local/tomcat/webapps/ROOT \
   -v $LOGDIR:/usr/local/tomcat/logs \
   $IMAGE
