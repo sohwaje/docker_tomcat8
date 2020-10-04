@@ -7,20 +7,23 @@ IMAGE="tomcat8"
 CONTAINER="tomcat8"
 LOGDIR="/var/log/$CONTAINER"
 
+
 _retVal()
 {
+  local retVal=$?
   if [[ $retVal -eq 0 ]];then
     echo "[OK]"
     # do something
   else
     echo "[Failed]"
-    exit
+    exit 1
   fi
 }
 ### start
 echo "[1] Docker install check"
 echo "[Step 1 ---> Docker install check]"
-  sudo docker -v | _retVal
+  sudo docker -v >/dev/null 2>&1
+  _retVal
 echo "[2] Create Tomcat log directory"
 if [[ -d $LOGDIR ]];then
   echo "[Step 2 ---> $LOGDIR log directory already exist. backup and create]"
