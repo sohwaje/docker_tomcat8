@@ -37,8 +37,8 @@ fi
 
 echo "[3] install tomcat8 docker"
 echo "[Step 3 ---> docker build & run]"
-docker build -tq $IMAGE $BASEDIR/ && \
+docker build -t $IMAGE $BASEDIR/ -q && \
   docker run -d -p $Fport:$Bport \
-  --name $CONTAINER \
+  --rm --name $CONTAINER \
   -v $LOGDIR:/usr/local/tomcat/logs \
   $IMAGE && echo "[ Successfully docker build and run $CONTAINER ]"
