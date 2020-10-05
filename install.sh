@@ -22,8 +22,8 @@ _retVal()
 ### start
 echo "[1] Docker install check"
 echo "[Step 1 ---> Docker install check]"
-  sudo docker -v >/dev/null 2>&1
-  _retVal
+  sudo docker -v >/dev/null 2>&1 || _retVal
+
 echo "[2] Create Tomcat log directory"
 if [[ -d $LOGDIR ]];then
   echo "[Step 2 ---> $LOGDIR log directory already exist. backup and create]"
