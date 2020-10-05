@@ -41,4 +41,4 @@ docker build -tq $IMAGE $BASEDIR/ && \
   docker run -d -p $Fport:$Bport \
   --name $CONTAINER \
   -v $LOGDIR:/usr/local/tomcat/logs \
-  $IMAGE
+  $IMAGE && echo "[ Successfully docker build and run $CONTAINER ]"
