@@ -3,11 +3,11 @@
 SCRIPT=$(readlink -f "$0")  # script Absolute path
 BASEDIR=$(dirname "$SCRIPT") # script directory Absolute path
 date_=$(date "+%Y%m%d%H%M%S")
-IMAGE="tomcat8"
-CONTAINER="tomcat8"
-LOGDIR="/var/log/$CONTAINER"
-Fport="18080"
-Bport="8080"
+IMAGE="tomcat8"           #도커 이미지
+CONTAINER="tomcat8"       # 도커 컨테이너 이름
+LOGDIR="/var/log/$CONTAINER"  # 호스트와 공유할 로그 디렉토리
+Fport="18080"                 # Front Port
+Bport="8080"                  # Backend Port 실제 컨테이너 포트
 WEBHOOK_ADDRESS=""
 ## send slack func
 function slack_message(){
