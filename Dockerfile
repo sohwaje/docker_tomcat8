@@ -2,7 +2,7 @@ FROM tomcat:8.5-jre8
 
 MAINTAINER Sohwaje <sohwaje@gmail.com>
 
-# GC log directory
+# GC 로그 디렉토리 생성
 RUN mkdir /usr/local/tomcat/logs/gclog
 
 # 환경 설정 파일 복사
