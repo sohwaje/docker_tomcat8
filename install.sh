@@ -55,7 +55,7 @@ echo "[Step 1/3 ---> Docker install check]"
 echo "[2] Create Tomcat log directory"
 if [[ ! -d $LOGDIR ]];then
   echo "[Step 2/3 ---> Create $LOGDIR]"
-  sudo mkdir /var/log/$LOGDIR
+  sudo mkdir $LOGDIR
 else
   echo "[Step 2/3 ---> $LOGDIR log directory already exist. backup and create]"
   sudo mv $LOGDIR /var/log/$CONTAINER-$date_
