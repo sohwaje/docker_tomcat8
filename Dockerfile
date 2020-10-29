@@ -25,6 +25,7 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT
 ADD webapps/ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
 # Dokcer 컨테이너 시간 설정
-RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && echo Asia/Seoul > /etc/localtime
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 CMD ["catalina.sh", "run"]
