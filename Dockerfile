@@ -24,4 +24,7 @@ ADD lib/tomcat-extensions.jar /usr/local/tomcat/lib
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 ADD webapps/ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
+# Dokcer 컨테이너 시간 설정
+RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && echo Asia/Seoul > /etc/localtime
+
 CMD ["catalina.sh", "run"]
